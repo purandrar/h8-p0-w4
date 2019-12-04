@@ -1,7 +1,31 @@
 
 function graduates (students) {
     // Code disini
-  }
+  var container = {};
+    for(var i =0; i< students.length; i++){
+       if(container[students[i].class] === undefined){
+        if(students[i].score >=75){ 
+          container[students[i].class] = {};
+          container[students[i].class] = [];
+            var temp = {
+              name : students[i].name,
+              score : students[i].score
+            };
+            container[students[i].class].push(temp);
+          }
+        }
+        else{
+          if(students[i].score >=75){ 
+          var temp = {
+            name : students[i].name,
+            score : students[i].score
+          };
+          container[students[i].class].push(temp);
+          }
+        }
+    }
+  return container;
+}
   
   console.log(graduates([
     {

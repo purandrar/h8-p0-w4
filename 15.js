@@ -1,36 +1,44 @@
 function highestScore (students) {
     // Code disini
-    var container = [];
+    var container = {};
     for(var i = 0; i< students.length; i++){
-        var terbaikDiKelas ={};
-        terbaikDiKelas["name"] = students[i]["name"];
-        terbaikDiKelas["score"] = students[i]["score"];
-        terbaikDiKelas["class"] = students[i]["class"]; 
-        for(var j = i+1; j< students.length; j++){
-            if(terbaikDiKelas.class === students[j].class){
-                if (terbaikDiKelas.score < students[j].score){
-                terbaikDiKelas["name"] = students[i]["name"];
-                terbaikDiKelas["score"] = students[i]["score"];
-                }
-            }
-        } 
-        if(checkKelas(container, terbaikDiKelas["class"])){
-            // var x = terbaikDiKelas.class;
-            var x = {};
-            x.name = terbaikDiKelas.name;
-            x.score = terbaikDiKelas.score;
-            container.push(x);
+        if(container[students[i].class] === undefined){
+          //container[students[i].class] = {};
+          container[students[i].class] = {
+            name : students[i].name,
+            score : students[i].score
+          };
         }
+        else if(container[students[i].class] < students[i].score){
+          name : students[i]["name"];
+          score : students[i].score;
+        }
+        // terbaikDiKelas["name"] = students[i]["name"];
+        // terbaikDiKelas["score"] = students[i]["score"];
+        // terbaikDiKelas["class"] = students[i]["class"]; 
+        // for(var j = i+1; j< students.length; j++){
+        //     if(terbaikDiKelas.class === students[j].class){
+        //         if (terbaikDiKelas.score < students[j].score){
+        //         terbaikDiKelas["name"] = students[i]["name"];
+        //         terbaikDiKelas["score"] = students[i]["score"];
+        //         terbaikDiKelas["class"] = students[i]["class"]; 
+        //         }
+        //     }
+        // } 
+        // // // console.log(terbaikDiKelas);
+        // // if(checkKelas(container, terbaikDiKelas.class)){
+        // //     // var x = terbaikDiKelas.class;
+        // //     var x = {};
+        // //     x.terbaikDiKelas.class = {
+        // //     name = terbaikDiKelas.name,
+        // //     score = terbaikDiKelas.score,
+        // //     };
+        // //     container.push(terbaikDiKelas);
+        // // }
+        
     }
+    
     return container;
-  }
-  function checkKelas(arr,kelas){
-      for(var i = 0; i <arr.length; i++){
-          if (arr[i].class === kelas){
-              return false;
-          }
-      }
-      return true;
   }
   
   // TEST CASE
@@ -63,39 +71,39 @@ function highestScore (students) {
   // }
   
   
-  console.log(highestScore([
-    {
-      name: 'Alexander',
-      score: 100,
-      class: 'foxes'
-    },
-    {
-      name: 'Alisa',
-      score: 76,
-      class: 'wolves'
-    },
-    {
-      name: 'Vladimir',
-      score: 92,
-      class: 'foxes'
-    },
-    {
-      name: 'Albert',
-      score: 71,
-      class: 'wolves'
-    },
-    {
-      name: 'Viktor',
-      score: 80,
-      class: 'tigers'
-    }
-  ]));
+  // console.log(highestScore([
+  //   {
+  //     name: 'Alexander',
+  //     score: 100,
+  //     class: 'foxes'
+  //   },
+  //   {
+  //     name: 'Alisa',
+  //     score: 76,
+  //     class: 'wolves'
+  //   },
+  //   {
+  //     name: 'Vladimir',
+  //     score: 92,
+  //     class: 'foxes'
+  //   },
+  //   {
+  //     name: 'Albert',
+  //     score: 71,
+  //     class: 'wolves'
+  //   },
+  //   {
+  //     name: 'Viktor',
+  //     score: 80,
+  //     class: 'tigers'
+  //   }
+  // ]));
   
-  // {
-  //   foxes: { name: 'Alexander', score: 100 },
-  //   wolves: { name: 'Alisa', score: 76 },
-  //   tigers: { name: 'Viktor', score: 80 }
-  // }
+  // // {
+  // //   foxes: { name: 'Alexander', score: 100 },
+  // //   wolves: { name: 'Alisa', score: 76 },
+  // //   tigers: { name: 'Viktor', score: 80 }
+  // // }
   
   
-  console.log(highestScore([])); //{}
+  // console.log(highestScore([])); //{}
